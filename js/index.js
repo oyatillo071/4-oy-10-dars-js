@@ -59,7 +59,7 @@ document.getElementById("third--btn").addEventListener("click", function () {
 });
 
 //                               ### 2. Concat
-// 4. Ikki ta massivni birlashtiring va yangi hosil bo'lgan massivni qaytaring.
+// 4-mashq 1. Ikki ta massivni birlashtiring va yangi hosil bo'lgan massivni qaytaring.
 document.getElementById("four--btn").addEventListener("click", function () {
   let fourArr1 = [];
   let fourArr2 = [];
@@ -88,7 +88,7 @@ document.getElementById("four--btn").addEventListener("click", function () {
   };
 });
 
-// 5. Uchta satrni qo‘shib, bitta matn yaratib oling.
+// 5-mashq 2. Uchta satrni qo‘shib, bitta matn yaratib oling.
 document.getElementById("five--btn").addEventListener("click", function () {
   let fiveFirstText = document.getElementById("five--value--first").value;
   let fiveSecondText = document.getElementById("five--value--second").value;
@@ -111,5 +111,34 @@ document.getElementById("five--btn").addEventListener("click", function () {
 
   document.getElementById("five--close").onclick = function () {
     document.getElementById("five--answer").innerHTML = " ";
+  };
+});
+
+//6-mashq 3. Ikki massivni birlashtirib, keyin ularga yangi element qo'shib, natijani toping.
+document.getElementById("six--btn").addEventListener("click", function () {
+  let sixArr1 = [];
+  let sixArr2 = [];
+
+  let sixArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < sixArrLenght; i++) {
+    sixArr1[i] = Math.trunc(Math.random() * 1000);
+    sixArr2[i] = Math.trunc(Math.random() * 1000);
+  }
+
+ let sixAnswer = "1-Massiv: " + sixArr1 + "<br>2-Massiv: " + sixArr2;
+
+  let sixResArr = sixArr1.concat(sixArr2,"Yangi element");
+
+
+  sixAnswer+="<br><br> Natija: <br>";
+  for (let i = 0; i < sixResArr.length; i++) {
+    sixAnswer += " " + sixResArr[i] + " ";
+  }
+
+  document.getElementById("six--answer").innerHTML = sixAnswer;
+
+  document.getElementById("six--close").onclick = function () {
+    document.getElementById("six--answer").innerHTML = " ";
   };
 });

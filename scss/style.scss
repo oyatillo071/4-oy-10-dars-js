@@ -12,59 +12,59 @@
 .card--wrapper {
   margin: 100px 0px;
   padding: 40px 20px;
-    max-width: 100%;
-    width: 100%;
+  max-width: 100%;
+  width: 100%;
   border-bottom: 20px dotted grey;
 }
-input,button {
+input,
+button {
   border-radius: 12px;
   border: none;
   background-color: rgb(51, 51, 229);
   color: white;
-  padding:20px 40px;
+  padding: 20px 40px;
   width: 100%;
   margin-block: 20px;
   font-size: 29px;
   cursor: pointer;
 }
-input{
-    color: black;
-    background-color: #fff;
-    border: 1px solid black;
+input {
+  color: black;
+  background-color: #fff;
+  border: 1px solid black;
 }
-.answer--wrapper{
-    border: 1px solid gray;
-    position: relative;
-    padding: 40px 80px;
-    border-radius: 12px;
-    max-width: 100%;
-    width: 100%;
+.answer--wrapper {
+  border: 1px solid gray;
+  position: relative;
+  padding: 40px 80px;
+  border-radius: 12px;
+  max-width: 100%;
+  width: 100%;
 }
 p {
   font-size: 20px;
   color: rgb(72, 133, 133);
-    max-width: 100%;
-    width: 100%;
-    white-space: wrap;
-    text-wrap: wrap;
-    padding-top: 20px;
-    line-height: 2;
+  max-width: 100%;
+  width: 100%;
+  white-space: wrap;
+  text-wrap: wrap;
+  padding-top: 20px;
+  line-height: 2;
 }
 
-
-label{
-    color: rgb(3, 110, 78);
-    font-size: 42px;
+label {
+  color: rgb(3, 110, 78);
+  font-size: 42px;
 }
 h5 {
   font-size: 33px;
   color: rgb(6, 95, 95);
-    line-height: 2;
+  line-height: 2;
 }
-span{
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    font-size: 30px;
-    cursor:grabbing;
+span {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 30px;
+  cursor: grabbing;
 }

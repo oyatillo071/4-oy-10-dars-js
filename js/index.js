@@ -310,7 +310,7 @@ document.getElementById("eleven--btn").addEventListener("click", function () {
   };
 });
 
-//12-mashq 3. Berilgan matnda "a" harfi birinchi va oxirgi marta qayerda paydo bo‘lishini toping.
+//12-mashq 3. Berilgan matnda "a" harfi birinchi va oxirgi marta qayerda paydo bo'lishini toping.
 document.getElementById("twelve--btn").addEventListener("click", function () {
   let twelveSearchText = document.getElementById("twelve--value").value;
 
@@ -366,7 +366,7 @@ document
     };
   });
 
-// 14-mashq 2. Alfavit bo‘yicha massivdagi so'zlarni tartiblang.
+// 14-mashq 2. Alfavit bo'yicha massivdagi so'zlarni tartiblang.
 document.getElementById("fourteen--btn").addEventListener("click", function () {
   let fourteenArr = [
     "Assalom",
@@ -442,7 +442,7 @@ document.getElementById("sixteen--btn").addEventListener("click", function () {
   };
 });
 
-// 17-mashq 2. Berilgan matnni harflarini teskari qilib ko‘rsating.
+// 17-mashq 2. Berilgan matnni harflarini teskari qilib ko'rsating.
 document
   .getElementById("seventeen--btn")
   .addEventListener("click", function () {
@@ -586,7 +586,7 @@ document.getElementById("twtone--btn").addEventListener("click", function () {
   };
 });
 
-// 22-mashq 2. Massivdagi so‘zlarni bo‘sh joy bilan birlashtirib, satr ko‘rinishida qaytaring.
+// 22-mashq 2. Massivdagi so'zlarni bo'sh joy bilan birlashtirib, satr ko'rinishida qaytaring.
 
 document.getElementById("twttwo--btn").addEventListener("click", function () {
   let twttwoArr = [];
@@ -648,7 +648,7 @@ document.getElementById("twtthree--btn").addEventListener("click", function () {
 
 // ### 9.                                         Push, Shift
 
-// 24-mashq 1. Massiv oxiriga yangi element qo‘shing va natijani ko‘rsating.
+// 24-mashq 1. Massiv oxiriga yangi element qo'shing va natijani ko'rsating.
 document.getElementById("twtfour--btn").addEventListener("click", function () {
   let twtfourArr = [];
 
@@ -659,9 +659,8 @@ document.getElementById("twtfour--btn").addEventListener("click", function () {
       twtfourArr[i] = " string ";
       continue;
     }
-  
+
     twtfourArr[i] = " This ";
-  
   }
 
   let twtfourAnswer =
@@ -677,5 +676,174 @@ document.getElementById("twtfour--btn").addEventListener("click", function () {
 
   document.getElementById("twtfour--close").onclick = function () {
     document.getElementById("twtfour--answer").innerHTML = " ";
+  };
+});
+
+// 25-mashq
+// 2. Massivdan birinchi elementni o'chirib tashlang va natijani ko'rsating.
+
+document.getElementById("twtfive--btn").addEventListener("click", function () {
+  let twtfiveArr = [];
+
+  let twtfiveArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < twtfiveArrLenght; i++) {
+    if (i % 2 == 1) {
+      twtfiveArr[i] = " string ";
+      continue;
+    }
+
+    twtfiveArr[i] = " This is";
+  }
+
+  let twtfiveAnswer =
+    "Boshlang'ich Massiv: <br>" +
+    twtfiveArr +
+    "<br><br> Ozgartirilgan Massiv: <br>";
+
+  twtfiveArr.shift();
+
+  twtfiveAnswer += twtfiveArr;
+
+  document.getElementById("twtfive--answer").innerHTML = twtfiveAnswer;
+
+  document.getElementById("twtfive--close").onclick = function () {
+    document.getElementById("twtfive--answer").innerHTML = " ";
+  };
+});
+
+// 26-mashq
+// 3. Berilgan massivga oxiriga bir nechta element qo'shing,
+//  va massivdan birinchi elementni olib tashlang.
+document.getElementById("twtsix--btn").addEventListener("click", function () {
+  let twtsixArr = [];
+
+  let twtsixArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < twtsixArrLenght; i++) {
+    if (i % 2 == 1) {
+      twtsixArr[i] = " string ";
+      continue;
+    }
+
+    twtsixArr[i] = " This is";
+  }
+
+  let twtsixAnswer =
+    "Boshlang'ich Massiv: <br>" +
+    twtsixArr +
+    "<br><br> Ozgartirilgan Massiv: <br>";
+
+  twtsixArr.shift();
+
+  let twtsixNew = Math.trunc(Math.random() * 4) + 1;
+
+  for (let i = 0; i <= twtsixNew; i++) {
+    twtsixArr.push(" Yangi element");
+  }
+
+  twtsixAnswer += twtsixArr;
+
+  document.getElementById("twtsix--answer").innerHTML = twtsixAnswer;
+
+  document.getElementById("twtsix--close").onclick = function () {
+    document.getElementById("twtsix--answer").innerHTML = " ";
+  };
+});
+
+// ###                                              10. Unshift, Pop
+// 27-mashq 1. Massivning boshiga yangi element qo'shing va natijani qaytaring.
+
+document.getElementById("twtseven--btn").addEventListener("click", function () {
+  let twtsevenArr = [];
+
+  let twtsevenArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < twtsevenArrLenght; i++) {
+    if (i % 2 == 1) {
+      twtsevenArr[i] = " string ";
+      continue;
+    }
+
+    twtsevenArr[i] = " This is";
+  }
+
+  let twtsevenAnswer =
+    "Boshlang'ich Massiv: <br>" +
+    twtsevenArr +
+    "<br><br> Ozgartirilgan Massiv: <br>";
+
+  twtsevenArr.unshift(" Yangi element ");
+
+  twtsevenAnswer += twtsevenArr;
+
+  document.getElementById("twtseven--answer").innerHTML = twtsevenAnswer;
+
+  document.getElementById("twtseven--close").onclick = function () {
+    document.getElementById("twtseven--answer").innerHTML = " ";
+  };
+});
+
+// 28-mashq 2. Massivning oxirgi elementini o‘chirib tashlang va natijani qaytaring.
+document.getElementById("twteight--btn").addEventListener("click", function () {
+  let twteightArr = [];
+
+  let twteightArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < twteightArrLenght; i++) {
+    if (i % 2 == 1) {
+      twteightArr[i] = " string ";
+      continue;
+    }
+
+    twteightArr[i] = " This is";
+  }
+
+  let twteightAnswer =
+    "Boshlang'ich Massiv: <br>" +
+    twteightArr +
+    "<br><br> Ozgartirilgan Massiv: <br>";
+
+  twteightArr.pop();
+
+  twteightAnswer += twteightArr;
+
+  document.getElementById("twteight--answer").innerHTML = twteightAnswer;
+
+  document.getElementById("twteight--close").onclick = function () {
+    document.getElementById("twteight--answer").innerHTML = " ";
+  };
+});
+
+// 29-mashq 3. Birinchi va oxirgi elementni qo‘shish va o‘chirish bilan bog'liq operatsiyalarni bajaring.
+document.getElementById("twtnine--btn").addEventListener("click", function () {
+  let twtnineArr = [];
+
+  let twtnineArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < twtnineArrLenght; i++) {
+    if (i % 2 == 1) {
+      twtnineArr[i] = " string ";
+      continue;
+    }
+
+    twtnineArr[i] = " This is";
+  }
+
+  let twtnineAnswer =
+    "Boshlang'ich Massiv: <br>" +
+    twtnineArr +
+    "<br><br> Ozgartirilgan Massiv: <br>";
+
+  twtnineArr.pop();
+  twtnineArr.unshift(" Yangi element ");
+
+
+  twtnineAnswer += twtnineArr;
+
+  document.getElementById("twtnine--answer").innerHTML = twtnineAnswer;
+
+  document.getElementById("twtnine--close").onclick = function () {
+    document.getElementById("twtnine--answer").innerHTML = " ";
   };
 });

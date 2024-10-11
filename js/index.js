@@ -463,6 +463,32 @@ document
     };
   });
 
+// bu masala oxirida sanaganimda qolib ketibdi oxirida bajardim
+// revers 3. Sonlar ketma-ketligini teskari tartibda ko‘rsating.
+
+document.getElementById("revers--btn").addEventListener("click", function () {
+  let reversAnswer = "Boshlang'ich massiv: ";
+  let reversArr = [];
+
+  let reversArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+  for (let i = 0; i < reversArrLenght; i++) {
+    reversArr[i] = Math.trunc(Math.random() * 15);
+  }
+
+  reversAnswer += reversArr;
+
+  reversArr.reverse();
+
+  reversAnswer += "<br>Teskari tartibdagi Massiv: " + reversArr;
+
+  document.getElementById("revers--answer").innerHTML = reversAnswer;
+
+  document.getElementById("revers--close").onclick = function () {
+    document.getElementById("revers--answer").innerHTML = " ";
+  };
+});
+
 // ###                                 7. ToString
 // 18-mashq 1. Massivni matnga aylantiring.
 document
@@ -838,12 +864,478 @@ document.getElementById("twtnine--btn").addEventListener("click", function () {
   twtnineArr.pop();
   twtnineArr.unshift(" Yangi element ");
 
-
   twtnineAnswer += twtnineArr;
 
   document.getElementById("twtnine--answer").innerHTML = twtnineAnswer;
 
   document.getElementById("twtnine--close").onclick = function () {
     document.getElementById("twtnine--answer").innerHTML = " ";
+  };
+});
+
+//                                          Qiyinroq masalalar
+
+// ### Qiyinroq masalalar:
+
+//  1. **Massivning uzunligi**:
+//  - Berilgan massivda elementlar soni toq bo'lsa, massivning o'rta elementini olib tashlang. Agar juft bo'lsa, massivni ikkiga bo'ling va har bir qismini alohida qaytaring.
+
+document
+  .getElementById("hardFirst--btn")
+  .addEventListener("click", function () {
+    let hardFirstArr = [];
+
+    let hardFirstArrLenght = Math.trunc(Math.random() * 14) + 1;
+
+    for (let i = 0; i < hardFirstArrLenght; i++) {
+      hardFirstArr[i] = Math.trunc(Math.random() * 15);
+    }
+    let hardFirstAnswer = "Boshlang'ich Massiv: " + hardFirstArr;
+
+    if (hardFirstArr.lenght % 2 == 0) {
+      let firstPart = hardFirstArr.slice(0, hardFirstArr.length / 2);
+
+      let secondPart = hardFirstArr.slice(hardFirstArr.length / 2);
+
+      hardFirstAnswer +=
+        "<br>Juft, ikkiga bo'linganda <br>" +
+        "Birinchi qism: " +
+        firstPart +
+        "<br>Ikkinchi qism: " +
+        secondPart;
+    } else {
+      let halfIndex = Math.floor(hardFirstArr.length / 2);
+
+      hardFirstArr.splice(halfIndex, 1);
+
+      hardFirstAnswer += "<br> O'zgartirilgan massiv: " + hardFirstArr;
+    }
+
+    document.getElementById("hardFirst--answer").innerHTML = hardFirstAnswer;
+    document.getElementById("hardFirst--close").onclick = function () {
+      document.getElementById("hardFirst--answer").innerHTML = " ";
+    };
+  });
+
+//  2. **Massivni birlashtirish va filtr qilish**:
+//  - Ikki massivni birlashtiring, keyin yangi massivda faqat son
+// bo'lgan elementlarni saqlab qoldiring.
+
+document
+  .getElementById("hardSecond--btn")
+  .addEventListener("click", function () {
+    let filterFirst = [];
+    let filterSecond = [];
+
+    let filterFirstLenght = Math.trunc(Math.random() * 14) + 1;
+
+    for (let i = 0; i < filterFirstLenght; i++) {
+      if (i % 2 == 1) {
+        filterFirst[i] = " string ";
+        continue;
+      }
+      filterFirst[i] = " This is ";
+    }
+
+    for (let i = 0; i < filterFirstLenght; i++) {
+      filterSecond[i] = Math.trunc(Math.random() * 1000);
+    }
+
+    filterFirst = filterFirst.concat(filterSecond);
+
+    let hardSecondAnswer =
+      "Boshlang'ich Massiv: <br>" +
+      filterFirst +
+      "<br><br>Yangilangan massiv: <br>";
+
+    let filterNumArr = [];
+
+    for (let i = 0; i < filterFirst.length; i++) {
+      if (typeof filterFirst[i] == "number") {
+        filterNumArr.push(filterFirst[i]);
+      }
+    }
+
+    hardSecondAnswer += filterNumArr;
+
+    document.getElementById("hardSecond--answer").innerHTML = hardSecondAnswer;
+
+    document.getElementById("hardSecond--close").onclick = function () {
+      document.getElementById("hardSecond--answer").innerHTML = " ";
+    };
+  });
+
+// 3. **Elementlarni qidirish va qo'shish**:
+//  - Massiv ichida qidirilayotgan element mavjud bo'lsa,
+//  uni olib tashlang. Agar mavjud bo'lmasa, massiv
+//  oxiriga yangi element qo'shing.
+document
+  .getElementById("hardThird--btn")
+  .addEventListener("click", function () {
+    let searchElement = document.getElementById("hardThird--value").value;
+
+    let findThird = [];
+
+    let findLenght = Math.trunc(Math.random() * 14) + 1;
+
+    for (let i = 0; i < findLenght; i++) {
+      if (i % 2 == 1) {
+        findThird[i] = "String";
+        continue;
+      }
+
+      findThird[i] = Math.trunc(Math.random() * 100);
+    }
+
+    let hardThirdAnswer = "Massiv: <br>" + findThird;
+
+    let findIndex = findThird.indexOf(searchElement);
+
+    findIndex > -1
+      ? (findThird.splice(findIndex, 1),
+        (hardThirdAnswer += "<br> Element topildi"))
+      : (findThird.push("Yangi element"),
+        (hardThirdAnswer += "<br>Element topilmadi"));
+
+    hardThirdAnswer += "<br>Yangilangan massiv: <br>" + findThird;
+
+    document.getElementById("hardThird--answer").innerHTML = hardThirdAnswer;
+
+    document.getElementById("hardThird--close").onclick = function () {
+      document.getElementById("hardThird--answer").innerHTML = " ";
+    };
+  });
+
+// 4. **Massivdagi elementlarning indekslari**:
+//  - Berilgan massivda ma'lum bir elementning birinchi
+//  va oxirgi indeksini toping, so'ngra ushbu indekslar
+// orasidagi barcha elementlarni yangi massivga oling.
+document.getElementById("hardFour--btn").addEventListener("click", function () {
+  let searchElementIndex = document.getElementById("hardFour--value").value;
+
+  let findFour = [];
+  let fourNewArr = [];
+
+  let findLenght = Math.trunc(Math.random() * 14) + 1;
+  for (let i = 0; i < findLenght; i++) {
+    if (i % 4 == 1) {
+      findFour[i] = "String";
+
+      continue;
+    }
+
+    findFour[i] = Math.trunc(Math.random() * 100);
+  }
+
+  let hardFourAnswer = "Massiv: <br>" + findFour;
+
+  let findFirstIndex = findFour.indexOf(searchElementIndex);
+  let findLastIndex = findFour.lastIndexOf(searchElementIndex);
+
+  if (findFirstIndex > -1) {
+    fourNewArr = findFour.slice(findFirstIndex + 1, findLastIndex);
+
+    hardFourAnswer += "<br>Yangilangan massiv: " + fourNewArr;
+  } else {
+    hardFourAnswer += "<br>Bunday qiymat topilmadi";
+  }
+
+  document.getElementById("hardFour--answer").innerHTML = hardFourAnswer;
+
+  document.getElementById("hardFour--close").onclick = function () {
+    document.getElementById("hardFour--answer").innerHTML = " ";
+  };
+});
+
+// 5. **Sonlarni tartiblab, so'zlarni teskari qilish**:
+//  - Massivda sonlar va so'zlar aralash bo'lsa,
+//  sonlarni o'sish tartibida, so'zlarni teskari tartibda chiqaring.
+
+document.getElementById("hardFive--btn").addEventListener("click", function () {
+  // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+  // sozlarni random tarzda generatsiya qilish uchun kodni stackoverflowdan oldim
+  // sababi raqamlarni qilishni korsatib bergandi satrni esa xali organganimiz yoq edi
+
+  function randString(length) {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+  let sortFive = [];
+  let fiveNumArr = [];
+  let fiveStrArr = [];
+
+  let sortLenght = Math.trunc(Math.random() * 14) + 1;
+  for (let i = 0; i < sortLenght; i++) {
+    if (i % 3 == 1) {
+      sortFive[i] = randString(10);
+      continue;
+    }
+
+    sortFive[i] = Math.trunc(Math.random() * 100);
+  }
+
+  let hardFiveAnswer = "Massiv: <br>" + sortFive;
+
+  for (let i = 0; i < sortFive.length; i++) {
+    typeof sortFive[i] == "number"
+      ? fiveNumArr.push(sortFive[i])
+      : fiveStrArr.push(sortFive[i]);
+  }
+
+  fiveNumArr.sort(function (a, b) {
+    return a - b;
+  });
+
+  fiveStrArr.sort().reverse();
+
+  hardFiveAnswer += "<br>" + fiveNumArr + "<br>" + fiveStrArr;
+
+  document.getElementById("hardFive--answer").innerHTML = hardFiveAnswer;
+  document.getElementById("hardFive--close").onclick = function () {
+    document.getElementById("hardFive--answer").innerHTML = " ";
+  };
+});
+
+//  6. **Massivni o'zgartirib matn yaratish**:
+// - Massivdagi sonlarni ikkiga ko'paytiring va
+//  natijada hosil bo'lgan qiymatlarni bitta matn
+// ko'rinishida vergul bilan ajratib ko'rsating.
+
+document.getElementById("hardSix--btn").addEventListener("click", function () {
+  let changeSix = [];
+  let hardSixAnswer = "Boshlang'ch Massiv: <br>";
+
+  let changeLenght = Math.trunc(Math.random() * 14) + 1;
+  for (let i = 0; i < changeLenght; i++) {
+    changeSix[i] = Math.trunc(Math.random() * 100);
+  }
+  hardSixAnswer += changeSix;
+
+  for (let i = 0; i < changeLenght; i++) {
+    changeSix[i] *= 2;
+  }
+
+  let strArr = changeSix.join(",");
+
+  hardSixAnswer += "<br>Yangilangan massiv: <br>" + strArr;
+  document.getElementById("hardSix--answer").innerHTML = hardSixAnswer;
+
+  document.getElementById("hardSix--close").onclick = function () {
+    document.getElementById("hardSix--answer").innerHTML = " ";
+  };
+});
+
+// 7. **Qo'shma matn yaratish**:
+//  - Uchta massivni birlashtirib,
+// har bir massiv elementini “-“
+// belgisi bilan ajratib yangi matn
+//  hosil qiling. Matndagi barcha kichik
+// harflarni katta harflarga o'zgartiring.
+
+document
+  .getElementById("hardSeven--btn")
+  .addEventListener("click", function () {
+    // https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+    // sozlarni random tarzda generatsiya qilish uchun kodni stackoverflowdan oldim
+    // sababi raqamlarni qilishni korsatib bergandi satrni esa xali organganimiz yoq edi
+
+    function randString(length) {
+      let result = "";
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYfsdfsdfdsSDfsdfZabcdefghijklmnopqrstuvwxyz0123456789";
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+        counter += 1;
+      }
+      return result;
+    }
+
+    let firstSevenArr = [];
+    let secondSevenArr = [];
+    let thirdSevenArr = [];
+
+    let hardSevenAnswer = "Massiv:<br>";
+
+    let sortLenght = Math.trunc(Math.random() * 14) + 1;
+    for (let i = 0; i < sortLenght; i++) {
+      firstSevenArr[i] = randString(10);
+      secondSevenArr[i] = randString(8);
+      thirdSevenArr[i] = randString(15);
+    }
+
+    let hardStr = firstSevenArr.concat(secondSevenArr, thirdSevenArr).join("-");
+    // https://stackoverflow.com/questions/2354716/convert-lowercase-letter-to-upper-case-in-javascript
+    // kichik harflarni kattaga almashrish uchun kod olgan manzilim
+    hardStr = hardStr.toUpperCase();
+
+    hardSevenAnswer = hardStr;
+    document.getElementById("hardSeven--answer").innerHTML = hardSevenAnswer;
+    document.getElementById("hardSeven--close").onclick = function () {
+      document.getElementById("hardSeven--answer").innerHTML = " ";
+    };
+  });
+
+// 8. **Massivni yangilash va matnga aylantirish**:
+//  - Massivdagi elementlarning birinchi va oxirgi
+//  bo'lganlarini o'chirib, qolgan elementlarni satr
+// sifatida “:” belgisi bilan birlashtirib ko'rsating.
+
+document
+  .getElementById("hardEight--btn")
+  .addEventListener("click", function () {
+    function randString(length) {
+      let result = "";
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+        counter += 1;
+      }
+      return result;
+    }
+
+    let changeEightArr = [];
+
+    let changeLenght = Math.trunc(Math.random() * 14) + 1;
+    for (let i = 0; i < changeLenght; i++) {
+      if (i % 3 == 1) {
+        changeEightArr[i] = randString(5);
+        continue;
+      }
+
+      changeEightArr[i] = Math.trunc(Math.random() * 100);
+    }
+
+    let hardEightAnswer = "Massiv: <br>" + changeEightArr + "<br>";
+
+    changeEightArr.pop();
+    changeEightArr.shift();
+
+    let changeStr = changeEightArr.join(":");
+
+    hardEightAnswer += changeStr;
+
+    document.getElementById("hardEight--answer").innerHTML = hardEightAnswer;
+    document.getElementById("hardEight--close").onclick = function () {
+      document.getElementById("hardEight--answer").innerHTML = " ";
+    };
+  });
+
+// 9. **Massivni o'zgartirib element qo'shish**:
+//  - Massivning boshiga va oxiriga bittadan yangi
+//  element qo'shing, so'ngra massivni tartiblab chiqaring
+//  va natijada oxirgi uch elementni oling.
+
+document.getElementById("hardNine--btn").addEventListener("click", function () {
+  function randString(length) {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+  let changeNineArr = [];
+
+  let changeLenght = Math.trunc(Math.random() * 14) + 1;
+  for (let i = 0; i < changeLenght; i++) {
+    if (i % 3 == 1) {
+      changeNineArr[i] = randString(5);
+      continue;
+    }
+
+    changeNineArr[i] = Math.trunc(Math.random() * 100);
+  }
+
+  let hardNineAnswer =
+    "Massiv: <br>" + changeNineArr + "<br>Ozgartirilgan holat: <br>";
+
+  changeNineArr.push("yangi element");
+  changeNineArr.unshift("yangi element");
+
+  changeNineArr.sort();
+
+  hardNineAnswer += changeNineArr;
+  let nineArrPart = changeNineArr.slice(-3);
+  hardNineAnswer += "<br>Oxirgi 3 element: <br>" + nineArrPart;
+
+  document.getElementById("hardNine--answer").innerHTML = hardNineAnswer;
+  document.getElementById("hardNine--close").onclick = function () {
+    document.getElementById("hardNine--answer").innerHTML = " ";
+  };
+});
+
+//  10. **Elementlarni aylantirish va tartiblash**:
+//  - Massivni teskari qilib chiqing, so'ngra massivni
+//  boshidan 2 ta va oxiridan 3 ta elementni o'chiring.
+//  Qolgan elementlarni o'sish tartibida joylashtiring.
+document.getElementById("hardTen--btn").addEventListener("click", function () {
+  function randString(length) {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+  }
+
+  let changeTenArr = [];
+
+  let changeLenght = Math.trunc(Math.random() * 9)+7;
+  
+  for (let i = 0; i < changeLenght; i++) {
+    if (i % 3 == 1) {
+      changeTenArr[i] = randString(5);
+      continue;
+    }
+
+    changeTenArr[i] = Math.trunc(Math.random() * 100);
+  }
+
+  let hardTenAnswer =
+    "Massiv: <br>" + changeTenArr + "<br>Teskari tartibdagi holat: <br>";
+
+  changeTenArr.reverse();
+
+  hardTenAnswer += changeTenArr;
+
+  changeTenArr.splice(0, 2);
+
+  changeTenArr.splice(-3, 3);
+
+  changeTenArr.sort();
+
+  hardTenAnswer +=
+    "<br>Ochirilgan va sortirovka qilingan holat: <br>" + changeTenArr;
+
+  document.getElementById("hardTen--answer").innerHTML = hardTenAnswer;
+  document.getElementById("hardTen--close").onclick = function () {
+    document.getElementById("hardTen--answer").innerHTML = " ";
   };
 });
